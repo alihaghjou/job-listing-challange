@@ -20,26 +20,30 @@ type jobType = {
 };
 //todo: fix the image
 //todo: add header image color
-//todo: add filtering
+//todo: add filtering display
 function App() {
   const [jobs, setJobs] = useState<jobType[]>(data);
+  function handleFilter(basedOn: string) {
+    const d = [...jobs].filter((item) => [item.role, item.level, ...item.tools, ...item.languages ].includes(basedOn))
+    setJobs(d)
+  }
   return (
     <>
       <header className="mb-10 w-full bg-green-500">
         <img src={headerImg} alt="header" className="w-full" />
       </header>
-      <article className="flex flex-col gap-24 w-3/4 m-auto">
+      <article className="flex flex-col gap-10 w-3/4 m-auto">
         {jobs.map((job) => (
           <div
             key={job.id}
-            className="flex md:flex-row flex-col gap-6 justify-between md:items-center shadow py-4 px-6 "
+            className="flex md:flex-row flex-col gap-6 justify-between md:items-center shadow-xl py-4 px-6 "
           >
-            <div className="flex md:flex-row relative flex-col justify-center md:items-center gap-4 border-b">
+            <div className="flex md:flex-row relative flex-col justify-center md:items-center gap-4 border-b pb-4">
               <section className="absolute top-0 -translate-y-1/2">
                 <img src={Im} alt="Image" className="w-2/3" />
               </section>
-              <section className=" mt-12">
-                <div>
+              <section className="mt-12 flex flex-col gap-2">
+                <div className="flex gap-3">
                   <span>{job.company}</span>
                   {job.new ? <span>NEW!</span> : <></>}
                   {job.featured ? <span>FEATURED</span> : <></>}
@@ -52,8 +56,10 @@ function App() {
               </section>
             </div>
 
-            <section>
-              {[...job.tools, ...job.languages, job.level, job.role]}
+            <section className="flex flex-wrap gap-6">
+              {[job.role, job.level, ...job.tools, ...job.languages ].map((item, i) => (
+                <div key={i} onClick={() => handleFilter(item)} className="bg-slate-300 py-1 px-2 rounded">{item}</div>
+              ))}
             </section>
           </div>
         ))}
