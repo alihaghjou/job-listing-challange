@@ -19,13 +19,13 @@ export default function JobsComponent({ jobs, handleFilter }: propsType) {
               <img src={LogoArray[job.id - 1]} alt="Image" className="w-2/3" />
             </section>
             <section className="mt-12 flex flex-col gap-2">
-              <div className="flex gap-3">
-                <span>{job.company}</span>
-                {job.new ? <span>NEW!</span> : <></>}
-                {job.featured ? <span>FEATURED</span> : <></>}
+              <div className="flex gap-3 items-center">
+                <span className="text-[#7b8e8e] font-bold">{job.company}</span>
+                {job.new ? <span className="bg-[#7b8e8e] text-white py-1 px-2 rounded-2xl">NEW!</span> : <></>}
+                {job.featured ? <span className="bg-[#2c3a3a] rounded-2xl text-white py-1 px-2">FEATURED</span> : <></>}
               </div>
-              <div>{job.position}</div>
-              <div>
+              <div className="font-black">{job.position}</div>
+              <div className="flex gap-3 items-center">
                 <span>{job.postedAt}</span>.<span>{job.contract}</span>.
                 <span>{job.location}</span>
               </div>
@@ -38,7 +38,7 @@ export default function JobsComponent({ jobs, handleFilter }: propsType) {
                 <div
                   key={i}
                   onClick={() => handleFilter(item)}
-                  className="bg-slate-300 py-1 px-2 rounded"
+                  className="bg-[#eef6f6] py-1 px-2 rounded font-medium text-[#7b8e8e]"
                 >
                   {item}
                 </div>

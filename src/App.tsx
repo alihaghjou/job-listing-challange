@@ -20,7 +20,7 @@ export type jobType = {
   languages: string[];
   tools: string[];
 };
-//todo: add filtering display
+
 function App() {
   const [jobs, setJobs] = useState<jobType[]>(data);
   const [filterBase, setFilterBase] = useState<string[]>([]);
@@ -40,7 +40,7 @@ function App() {
         <img
           src={window.innerWidth > 750 ? headerImg : headermobile}
           alt="header"
-          className="w-full"
+          className="w-full h-2/3"
         />
       </header>
       <Filter
