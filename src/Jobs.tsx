@@ -21,10 +21,22 @@ export default function JobsComponent({ jobs, handleFilter }: propsType) {
             <section className="mt-12 flex flex-col gap-2">
               <div className="flex gap-3 items-center">
                 <span className="text-[#7b8e8e] font-bold">{job.company}</span>
-                {job.new ? <span className="bg-[#7b8e8e] text-white py-1 px-2 rounded-2xl">NEW!</span> : <></>}
-                {job.featured ? <span className="bg-[#2c3a3a] rounded-2xl text-white py-1 px-2">FEATURED</span> : <></>}
+                {job.new ? (
+                  <span className="bg-[#7b8e8e] text-white py-1 px-2 rounded-2xl">
+                    NEW!
+                  </span>
+                ) : (
+                  <></>
+                )}
+                {job.featured ? (
+                  <span className="bg-[#2c3a3a] rounded-2xl text-white py-1 px-2">
+                    FEATURED
+                  </span>
+                ) : (
+                  <></>
+                )}
               </div>
-              <div className="font-black">{job.position}</div>
+              <div className="font-black hover:text-[#7b8e8e] hover:cursor-pointer">{job.position}</div>
               <div className="flex gap-3 items-center">
                 <span>{job.postedAt}</span>.<span>{job.contract}</span>.
                 <span>{job.location}</span>
@@ -32,13 +44,13 @@ export default function JobsComponent({ jobs, handleFilter }: propsType) {
             </section>
           </div>
 
-          <section className="flex flex-wrap gap-6">
+          <section className="flex flex-wrap gap-6 justify-end">
             {[job.role, job.level, ...job.tools, ...job.languages].map(
               (item, i) => (
                 <div
                   key={i}
                   onClick={() => handleFilter(item)}
-                  className="bg-[#eef6f6] py-1 px-2 rounded font-medium text-[#7b8e8e]"
+                  className="bg-[#eef6f6] py-1 px-2 rounded font-medium text-[#7b8e8e] hover:cursor-pointer hover:bg-[#7b8e8e] hover:text-white"
                 >
                   {item}
                 </div>

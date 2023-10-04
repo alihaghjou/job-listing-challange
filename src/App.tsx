@@ -43,14 +43,16 @@ function App() {
           className="w-full h-2/3"
         />
       </header>
-      <Filter
-        filterBase={filterBase}
-        setFilterBase={setFilterBase}
-        setJobs={setJobs}
-      />
-      <article className="flex flex-col gap-10 w-3/4 m-auto">
-        <JobsComponent handleFilter={handleFilter} jobs={jobs} />
-      </article>
+      <main className="px-6">
+        <Filter
+          filterBase={filterBase}
+          setFilterBase={setFilterBase}
+          setJobs={setJobs}
+        />
+        <article className="flex flex-col gap-10 md:w-3/4 m-auto">
+          <JobsComponent handleFilter={handleFilter} jobs={jobs} />
+        </article>
+      </main>
     </>
   );
 }
