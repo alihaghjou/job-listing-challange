@@ -12,7 +12,7 @@ export default function JobsComponent({ jobs, handleFilter }: propsType) {
       {jobs.map((job) => (
         <div
           key={job.id}
-          className="flex md:flex-row flex-col gap-6 justify-between md:items-center shadow-xl py-4 px-6 "
+          className="flex md:flex-row flex-col gap-6 bg-white justify-between md:items-center shadow-xl py-4 px-6 "
         >
           <div className="flex md:flex-row relative flex-col justify-center md:items-center gap-4 border-b pb-4 md:border-none">
             <section className="absolute top-0 -translate-y-1/2 md:relative md:top-12">
